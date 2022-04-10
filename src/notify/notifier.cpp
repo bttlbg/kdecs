@@ -1,7 +1,8 @@
 #include "notifier.hpp"
 
-void notifier(std::string config_path, int *fd, int *wd)
+std::string notifier(std::string config_path, int *fd, int *wd)
 {
+    std::string wallpaper_path = "";
 
     int length, i = 0;
     char buffer[BUF_LEN];
@@ -38,12 +39,12 @@ void notifier(std::string config_path, int *fd, int *wd)
                     /*
                      * Plasma creates a temporary lock file when we change the wall,
                      * let's catch it and do some magic
-                    */
+                     */
                     if (!strcmp(event->name, "plasma-org.kde.plasma.desktop-appletsrc.lock"))
                     {
                         sleep(1); // Wait for the system to write the new wallpaper
                         syslog(LOG_NOTICE, "Wallpaper changed");
-                        readWallpaper();
+                        wallpaper_path = getWallpaper();
                     }
                     else
                     {
@@ -54,4 +55,5 @@ void notifier(std::string config_path, int *fd, int *wd)
         }
         i += EVENT_SIZE + event->len;
     }
+    return wallpaper_path;
 }

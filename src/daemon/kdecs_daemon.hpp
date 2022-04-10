@@ -1,3 +1,10 @@
+/*
+ * The daemon that's gonna be running in the background
+ * @file kdecs_daemon.hpp
+ * @author Giovanni Cuervo
+ * @version 0.1
+ */
+
 #ifndef DAEMON_H
 #define DAEMON_H
 

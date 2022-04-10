@@ -50,5 +50,5 @@ void kdecs_daemon()
     }
 
     /* Open the log file */
-    openlog("firstdaemon", LOG_PID, LOG_DAEMON);
+    openlog("kdecs daemon", LOG_PID, LOG_DAEMON);
 }
