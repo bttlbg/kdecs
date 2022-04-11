@@ -22,10 +22,10 @@ std::string getWallpaper()
 			std::getline(kde_config_file, line);
 
 			/*
-			 * The strin is temporary, i had a better aproach but I'm too lazy
+			 * The string is temporary, i had a better aproach but I'm too lazy
 			 * to do it now.
 			 */
-			//if (line == "[Containments][99][Wallpaper][org.kde.image][General]")
+			// if (line == "[Containments][99][Wallpaper][org.kde.image][General]")
 			if (line.find("[org.kde.image]") != std::string::npos)
 			{
 				/*
@@ -53,7 +53,6 @@ std::string getWallpaper()
 				 */
 				for (i = i; i < (int)line.length(); i++)
 					current_wallpaper += line.at(i);
-
 			}
 		}
 		kde_config_file.close();
