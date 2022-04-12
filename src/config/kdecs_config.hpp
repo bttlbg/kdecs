@@ -26,6 +26,6 @@ typedef struct
 } kdecs_config;
 
 kdecs_config parseConfig(std::string wallpaper_path);
-std::string makeCommand(std::string wallpaper_path);
+std::string makeCommand(std::string wallpaper_path, std::string &last_color_mode);
 
 #endif

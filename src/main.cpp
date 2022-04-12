@@ -9,7 +9,6 @@
 #include <string.h>
 
 #include "config/cache.hpp"
-#include "colors/colors.hpp"
 #include "daemon/kdecs_daemon.hpp"
 #include "config/kdecs_config.hpp"
 #include "notify/notifier.hpp"
@@ -27,7 +26,7 @@ int main()
 
 	std::string wallpaper_path = "", oldWallpaper = "";
 
-	kdecs_config k_config;
+	std::string last_color_mode;
 
 	while (1)
 	{
@@ -36,15 +35,12 @@ int main()
 		oldWallpaper = getOldWallpaper();
 		if (!wallpaper_path.empty() && wallpaper_path != oldWallpaper)
 		{
-			std::string command = makeCommand(wallpaper_path);
+			std::string command = makeCommand(wallpaper_path, last_color_mode);
 			system(command.c_str());
-			saveWallpaper(wallpaper_path);
+			if (last_color_mode != getLastColorMode())
+				system("qdbus org.kde.KWin /KWin reconfigure");
 
-			/*
-			 * REMOVE THE LINES BEFORE THIS COMMENT AN WRITE
-			 * A CALL TO YOUR OWN FUNCTION TO WRITTE YOUR COLORS
-			 */
-			// writeColorScheme(k_config);
+			saveCache(wallpaper_path, last_color_mode);
 		}
 	}
 

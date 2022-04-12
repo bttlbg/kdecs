@@ -51,11 +51,12 @@ kdecs_config parseConfig(std::string wallpaper_path)
 	return k_conf;
 }
 
-std::string makeCommand(std::string wallpaper_path)
+std::string makeCommand(std::string wallpaper_path, std::string &last_color_mode)
 {
 	kdecs_config kcf = parseConfig(wallpaper_path);
+	last_color_mode = kcf.light_mode;
 
-	std::string command = "sh $HOME/.config/polybar/scripts/scheme.sh ";
+	std::string command = "sh $HOME/.config/kdecs/scheme.sh ";
 
 	command += "-b " + kcf.backend + " ";
 	command += "-i " + kcf.wallpaper_path + " ";
