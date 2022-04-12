@@ -1,6 +1,6 @@
 
 # **kdecs**
-### **If you're not me the you probably want to check the public branch. The contents of this branch are not intended for everyone's desktop. You can use this branch if you know what are you doing**
+### **If you're not me then you probably want to check the public branch. The contents of this branch are not intended for everyone's desktop. You can use this branch if you know what are you doing.**
 
 </br>
 
