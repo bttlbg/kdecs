@@ -1,4 +1,9 @@
+
 # **kdecs**
+### **If you're not me the you probably want to check the public branch. The contents of this branch are not intended for everyone's desktop. You can use this branch if you know what are you doing**
+
+</br>
+
 A daemon to change the color scheme of KDE
 
 **Note: KDE has planned to release something similar in Plasma 5.25, since this announcement I took the decicion to make this tool compatible only with my dotfiles making it more of a personal tool, I do not recommend using it before doing your own changes to the code.**
