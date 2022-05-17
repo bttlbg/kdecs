@@ -43,7 +43,6 @@ std::string notifier(std::string config_path, int *fd, int *wd)
                     if (!strcmp(event->name, "plasma-org.kde.plasma.desktop-appletsrc.lock"))
                     {
                         sleep(1); // Wait for the system to write the new wallpaper
-                        syslog(LOG_NOTICE, "Wallpaper changed");
                         wallpaper_path = getWallpaper();
                     }
                     else

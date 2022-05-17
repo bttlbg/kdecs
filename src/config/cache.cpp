@@ -82,22 +82,21 @@ std::string getLastColorMode()
 
 void saveCache(std::string wall_Path, std::string color_mode)
 {
-    
-    if (wall_Path.at(0) == '/')
+    std::string wall_name = "";
+
+    for (int i = (int)wall_Path.length() - 1; i >= 0; i--)
     {
-        std::string aux_str = "";
-        for (int i = 1; i < (int)wall_Path.length(); i++)
-        {
-            aux_str += wall_Path.at(i);
-        }
-        wall_Path = aux_str;
+        if (wall_Path.at(i) == '/')
+            break;
+        else
+            wall_name = wall_Path.at(i) + wall_name;
     }
 
     std::string cache_path(getenv("HOME"));
     cache_path.append("/.cache/kdecs/info.ini");
     std::ofstream cache_file;
     cache_file.open(cache_path);
-    cache_file << "oldWall=" << wall_Path << std::endl;
+    cache_file << "oldWall=" << wall_name << std::endl;
     cache_file << "lastColorMode=" << color_mode << std::endl;
     cache_file.close();
 }
