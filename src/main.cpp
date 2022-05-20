@@ -52,7 +52,7 @@ int main()
 			if (last_color_mode != getCache("lastColorMode"))
 				system("qdbus org.kde.KWin /KWin reconfigure");
 
-			saveCache(wallpaper_path, last_color_mode);
+			saveCache(new_wallpaper_name, last_color_mode);
 		}
 		else
 		{
