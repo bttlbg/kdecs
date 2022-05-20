@@ -13,9 +13,9 @@ std::string getCache(std::string key);
 
 /*
  * Save cache data
- * @param wall_Path string with the path to the new wallpaper
+ * @param wall_name string with the name of the new wallpaper
  * @param color_mode string that tell if we used light mode or not
  */
-void saveCache(std::string wall_Path, std::string color_mode);
+void saveCache(std::string wall_name, std::string color_mode);
 
 #endif
