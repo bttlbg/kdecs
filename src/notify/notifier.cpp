@@ -29,26 +29,14 @@ std::string notifier(std::string config_path, int *fd, int *wd)
         {
             if (event->mask & IN_CREATE)
             {
-                if (event->mask & IN_ISDIR)
+                /*
+                 * Plasma creates this file when the desktop suffers any change and later,
+                 * is copied into the actual config file. For this reason it is now our trigger.
+                */
+                if (!strcmp(event->name, "plasma-org.kde.plasma.desktop-appletsrc.lock"))
                 {
-                    syslog(LOG_NOTICE, "Directory created");
-                    printf("The directory %s was created.\n", event->name);
-                }
-                else
-                {
-                    /*
-                     * Plasma creates a temporary lock file when we change the wall,
-                     * let's catch it and do some magic
-                     */
-                    if (!strcmp(event->name, "plasma-org.kde.plasma.desktop-appletsrc.lock"))
-                    {
-                        sleep(1); // Wait for the system to write the new wallpaper
-                        wallpaper_path = getWallpaper();
-                    }
-                    else
-                    {
-                        syslog(LOG_NOTICE, "File created");
-                    }
+                    sleep(1); // Wait for the system to write the new wallpaper
+                    wallpaper_path = getWallpaper();
                 }
             }
         }
